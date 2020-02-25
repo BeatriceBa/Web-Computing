@@ -28,7 +28,6 @@
 	<%@ page import="javax.servlet.http.HttpSession"%>
 	<%
 		String term = (String) request.getParameter("adding");
-		//int copies = (Integer.parseInt(request.getParameter("copies")));
 		BookDescription b = new BookDescription();
 		ArrayList<BookDescription> res = b.wantToAdd(term);
 		HttpSession sessione = request.getSession(false);
@@ -36,66 +35,62 @@
 	<jsp:include page="navbar.jsp"></jsp:include>
 	<section class="section">
 		<div class="container">
-			<h2 class="title">
-				Libri Ricercati in base a :
-				<%=term%></h2>
+			<h2 class="title">Libri Ricercati in base a : <%=term%></h2>
 			<%
-				if (!(res == null)) {
+				if (res != null) {
 					for (BookDescription book : res) {
 			%>
-			<div class="column">
-				<div class="card">
-					<div class="card-content">
-						<div class="media">
-							<div class="media-left">
-								<figure class="image">
-									<img id="image" src="<%=book.getImageUrl()%>"
-										alt="Placeholder image">
-								</figure>
-							</div>
-							<div class="media-content" id="media">
-								<p class="title is-4"><%=book.getTitle()%></p>
-								<p class="subtitle is-6"><%=book.getAuthor()%></p>
-								<p class="lead"><%=book.getDescription()%></p>
-								<b>ISBN : </b><%=book.getISBN()%>
-								<br> <b>Data di Pubblicazione:</b><%=1900 + book.getYear().getYear()%>
-								<br> <b>Categoria : </b><%=book.getCategory().getName()%>
-								<br> <br>
-								<div class="container">
-									<div class="level-left">
-										<p>
-											<input class="input" id="copies" type="number"
-												placeholder="Copie" required>
-											
-										</p>
-										<p>
-											<button class="button is-info" type="button" id="addButton"
-												value="Aggiungi" isbn="<%=book.getISBN()%>"
-												category="<%=book.getCategory().getName()%>"
-												title="<%=book.getTitle()%>" author="<%=book.getAuthor()%>"
-												publishingHouse="<%=book.getPublishingHouse()%>"
-												description="<%=book.getDescription()%>"
-												date="<%=book.getYear()%>"
-												imageUrl="<%=book.getImageUrl()%>">
-												<span>Aggiungi</span>
-											</button>
-										</p>
+		</div>
+		<div class="column">
+			<div class="card">
+				<div class="card-content">
+					<div class="media">
+						<div class="media-left">
+							<figure class="image">
+								<img id="image" src="<%=book.getImageUrl()%>"
+									alt="Placeholder image">
+							</figure>
+						</div>
+						<div class="media-content" id="media">
+							<p class="title is-4"><%=book.getTitle()%></p>
+							<p class="subtitle is-6"><%=book.getAuthor()%></p>
+							<p class="lead"><%=book.getDescription()%></p>
+							<b>ISBN : </b><%=book.getISBN()%>
+							<br> <b>Data di Pubblicazione:</b><%=1900 + book.getYear().getYear()%>
+							<br> <b>Categoria : </b><%=book.getCategory().getName()%>
+							<br> <br>
+							<div class="container">
+								<div class="level-left">
+									<p>
+										<input class="input" id="copies" type="number"
+											placeholder="Copie" required>
+										
+									</p>
+									<p>
+										<button class="button is-info" type="button" id="addButton"
+											value="Aggiungi" isbn="<%=book.getISBN()%>"
+											category="<%=book.getCategory().getName()%>"
+											title="<%=book.getTitle()%>" author="<%=book.getAuthor()%>"
+											publishingHouse="<%=book.getPublishingHouse()%>"
+											description="<%=book.getDescription()%>"
+											date="<%=book.getYear()%>"
+											imageUrl="<%=book.getImageUrl()%>">
+											<span>Aggiungi</span>
+										</button>
+									</p>
 
-									</div>
 								</div>
 							</div>
 						</div>
 					</div>
-
 				</div>
-			</div>
 
+			</div>
 		</div>
 		<%
 			}
 		}
 		%>
-		</div>
 	</section>
 	<script>
 		$('.button.is-info').each(function(index) {
