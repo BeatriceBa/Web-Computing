@@ -14,6 +14,7 @@
 	src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.js"
 	integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
 	crossorigin="anonymous"></script>
+<script type="text/javascript" src="./js/cart.js" > </script>
 <%@ page import="model.*"%>
 <%@ page import="dao.jdbc.*"%>
 <%@ page import="java.util.*"%>
@@ -77,18 +78,5 @@
 			</div>
 		</div>
 	</section>
-
-	<script>
-	$(document).on('click', "[id^='removeButton']", function () {
-		    	$notification = this.parentNode;
-			    $notification.parentNode.removeChild($notification);
-			    var xhr = new XMLHttpRequest();
-			    xhr.open('GET', "Cart?Action=RemoveFromCart&BookDescription=" + this.getAttribute("isbn") , true);
-			    xhr.send();
-			    document.location.reload(true);
-	    
-	});
-	</script>
-
 </body>
 </html>

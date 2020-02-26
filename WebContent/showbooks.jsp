@@ -12,9 +12,10 @@
 	src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	<script type="text/javascript" src="./js/showbooks.js" > </script>
 </head>
 <body>
-	<script type="text/javascript" src="./js/showbooks.js" > </script>
+
 	<%@ page import="dao.jdbc.*"%>
 	<%@ page import="dao.*"%>
 
@@ -63,10 +64,10 @@
 												
 												<% } else { %>
 												<a button disabled class="button is-primary is-small" id="loanButton"
-													isbn=<%=book.getISBN()%>> Prendi in prestito </a> 
+													isbn=<%=book.getISBN()%> onclick ="test()"> Prendi in prestito </a> 
 												<% }
 										} else {%>
-											</a> <a button class="button is-info is-small" id="modifyButton"
+											<a button class="button is-info is-small" id="modifyButton"
 											href="${pageContext.request.contextPath}/ModifyInfo?isbn=<%=book.getISBN()%>">
 											 Modifica attributi </a>
 										<%} %>

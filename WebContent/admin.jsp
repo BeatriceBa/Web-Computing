@@ -14,6 +14,7 @@
 	src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.js"
 	integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
 	crossorigin="anonymous"></script>
+<script type="text/javascript" src="./js/admin.js" > </script>
 </head>
 <body>
 	<jsp:include page="navbar.jsp"></jsp:include>
@@ -36,7 +37,7 @@
 							placeholder="ISBN o nome" required>
 					</p>
 					<p class="control">
-						<a class="button is-info" id="wantToAdd"> Aggiungi </a>
+						<a class="button is-info" id="wantToAdd" onclick="wantToAdd()"> Aggiungi </a>
 					</p>
 				</div>
 				<h5 class="title is-5">Rimuovi libro via ISBN:</h5>
@@ -51,7 +52,7 @@
 					</p>
 					
 					<p class="control">
-						<a id="removeFromLibrary" class="button is-danger"> Rimuovi </a>
+						<a id="removeFromLibrary" class="button is-danger" onclick="removeFromLibrary()"> Rimuovi </a>
 					</p>
 				</div>
 				<h5 class="title is-5">Pagamento mora e restituzione libri
@@ -62,7 +63,7 @@
 							placeholder="Matricola" required>
 					</p>
 					<p class="control">
-						<a class="button is-success" id="payArr"> Paga mora e
+						<a class="button is-success" id="payArr" onclick="payArr()"> Paga mora e
 							restituisci </a>
 					</p>
 				</div>
@@ -79,105 +80,12 @@
 							placeholder="Cognome" required>
 					</p>
 					<p class="control">
-						<a id="getInfo" class="button is-success"> Trova </a>
+						<a id="getInfo" class="button is-success" onclick="getInfo()"> Trova </a>
 					</p>
 				</div>
 				<div class="container" id="userInfos"></div>
 			</div>
 		</div>
 	</section>
-	<script>
-	
-	function error_popup(message){
-		
-		error_message = "<div id='success_error' class='notification is-danger'><button id='notificationClose' class='delete'></button><strong>Errore: </strong>" + message + "</div>";
- 		if ($('#success_error').length) {
-			$('#success_error').replaceWith(error_message);
-		} else {
-			$(".columns").before(error_message);
-		}
-	
-	}
-	
-	$('#wantToAdd').click(function(){
-		if($('#bookInfo')[0].checkValidity()==false) 
-			error_popup("Inserire qualcosa da cercare!");
-		else if ($('#bookInfo')[0].checkValidity())
-			location.href ="ShowResults?adding="+$('#bookInfo').val();
-	});
-	
-	
-	
-	$('#removeFromLibrary').click(function(){
-		if($('#r_bookInfo')[0].checkValidity()==false) 
-			error_popup("Inserire isbn del libro da rimuovere!");
-		else if($('#r_copies')[0].checkValidity()==false) 
-			error_popup("Inserire numero di copie da rimuovere!");
-		else if ($('#r_bookInfo')[0].checkValidity() && $('#r_copies')[0].checkValidity()){
-			$.ajax({
-				url : 'Admin',
-				type : 'post',
-				data: {
-					action: 'removeBook',
-					bookInfo: $('#r_bookInfo').val(),
-					copies: $('#r_copies').val()
-				},
-				success : function(response) {
-					if(response == "OK"){
-					$('#r_bookInfo').val('');
-					$('#r_copies').val('');
-					$( ".columns" ).before( "<div class='notification is-primary'><button id='notificationClose' class='delete'></button><strong>Copie rimosse!</strong></div>" );
-					}
-					console.log("NO"); 
-				}
-			});
-		}
-			
-	});
-	
-	
-	
-	$('#payArr').click(function(){
-		if($('#payMat')[0].checkValidity())
-			location.href = "PayArrear?matricola="+$('#payMat').val();
-		else
-			error_popup("Inserire matricola!");
- 	});
-	
-	$('#getInfo').click(function(){
-		if($('#searchName')[0].checkValidity() == false)
-			error_popup("Inserire nome");
-		else if($('#searchSurname')[0].checkValidity() == false)
-			error_popup("Inserire cognome");
-		else
-			$.ajax({
-				url : 'Admin',
-				type : 'post',
-				data: {
-					action: 'findUser',
-					name: $('#searchName').val(),
-					surname: $('#searchSurname').val()
-				},
-				success: function(response) {
-						$("#userDetail").remove();
-		             	$("#userInfos").append("<h6 id='userDetail' class='title is-6'>Matricola utente: " + response + "</h6>");
-		            }
-			});
-	});
-	
-	
-	
-	$(document).on('click', "[id^='notificationClose']", function () {	
-		  (document.querySelectorAll('.notification .delete') || []).forEach(($delete) => {
-			    $notification = $delete.parentNode;
-			      $notification.parentNode.removeChild($notification);
-			  });
-	});
-	
-	window.addEventListener('beforeunload', function (e) {
- 		  e.preventDefault();
- 		  e.returnValue = '';
-		});
-	</script>
 </body>
 </html>

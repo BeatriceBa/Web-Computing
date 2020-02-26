@@ -18,6 +18,7 @@
 	integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
 	crossorigin="anonymous"></script>
 <script src="http://malsup.github.com/jquery.form.js"></script>
+<script type="text/javascript" src="./js/login.js" > </script>
 <style>
 body {
 	overflow-y: hidden;
@@ -69,30 +70,5 @@ body {
 			</div>
 		</div>
 	</section>
-	<script>
-		// wait for the DOM to be loaded 
-		$(document)
-				.ready(
-						function() {
-							// bind 'myForm' and provide a simple callback function 
-							var show = false;
-							$('#loginForm')
-									.ajaxForm(
-											{
-												url : 'Login',
-												success : function(response) {
-													if (response == "OK") {
-														window.location.href = "Profile";
-													} else if (response == "NO"
-															&& !show) {
-														show = true;
-														$("#loginForm")
-																.append(
-																		"<div class='notification is-danger is-light'><strong>Errore!<br></strong>La mail e/o la password sono errate.</div>");
-													}
-												}
-											});
-						});
-	</script>
 </body>
 </html>
