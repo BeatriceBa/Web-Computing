@@ -203,20 +203,11 @@ public class BookDescriptionDaoJDBC implements BookDescriptionDao {
 		try {
 			final PreparedStatement stmt = conn.prepareStatement(query);
 			ResultSet rs = stmt.executeQuery();
-			while (rs.next()) {
-//				BookDescription tmp = new BookDescription(rs.getString("isbn"), 
-//							rs.getString("author"), 
-//							rs.getString("title"),
-//							rs.getString("publishing_house"), 
-//							rs.getDate("year"),
-//							new Category(rs.getString("category")), 
-//							rs.getString("description"), 
-//							rs.getString("imageUrl"));
-				
+			while (rs.next()) {				
 				Boolean bool = false;
-				if ( rs.getObject("id") != null ) {
+				if ( rs.getObject("id") != null  && rs.getBoolean("available") != false ) 
 					bool = true;
-				}
+				
 				result.put(rs.getString("isbn"), bool);
 			}
 			stmt.close();
