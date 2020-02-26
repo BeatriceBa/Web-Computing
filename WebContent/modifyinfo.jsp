@@ -21,6 +21,7 @@
 	BookDescriptionDaoJDBC dao_bd = new BookDescriptionDaoJDBC();
 	BookDescription bd = (BookDescription) dao_bd.getbyKey(request.getParameter("isbn"));
 %>
+<script type="text/javascript" src="./js/modifyInfo.js" > </script>
 </head>
 <body>
 
@@ -92,7 +93,7 @@
 							</p>
 							<br> <b>ISBN: </b><%=bd.getISBN()%><br> <b>Data di Pubblicazione: </b> <%=bd.getYear()%><br> <br>
 							<div class="field">
-								<button class="button is-info" type="submit">Modifica</button>
+								<button class="button is-info" id="modifyButton" type="submit">Modifica</button>
 							</div>
 						</form>
 					</div>
@@ -100,33 +101,5 @@
 			</div>
 		</div>
 	</section>
-	<script>
-		// wait for the DOM to be loaded 
-		$(document)
-				.ready(
-						function() {
-							// bind 'myForm' and provide a simple callback function 
-							var show = false;
-							$('#modifyForm')
-									.ajaxForm(
-											{
-												url : 'ModifyInfo?isbn=<%=bd.getISBN()%>',
-												success : function(response) {
-													if (response == "YES") {
-														$("#modifyForm")
-																.append(
-																		" <center> <div class='notification is-success is-light'> Modificato correttamente  </div> </center> ");
-														window.location.href = "index.jsp";
-													} else if (response == "NO"
-															&& !show) {
-														show = true;
-														$("#modifyForm")
-																.append(
-																		"<center> <div class='notification is-danger is-light'><strong>Errore!<br></strong>Non modificato.</div> </center>");
-													}
-												}
-											});
-						});
-	</script>
 </body>
 </html>
