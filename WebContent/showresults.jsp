@@ -14,6 +14,8 @@
 	src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.js"
 	integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
 	crossorigin="anonymous"></script>
+<script type="text/javascript" src="./js/showresults.js" > </script>
+
 </head>
 <body>
 	<%@ page import="dao.jdbc.*"%>
@@ -38,7 +40,8 @@
 			<h2 class="title">Libri Ricercati in base a : <%=term%></h2>
 			<%
 				if (res != null) {
-					for (BookDescription book : res) {
+					for (int i=0; i<res.size(); i++) {
+						BookDescription book = res.get(i);
 			%>
 		</div>
 		<div class="column">
@@ -63,8 +66,7 @@
 								<div class="level-left">
 									<p>
 										<input class="input" id="copies" type="number"
-											placeholder="Copie" required>
-										
+											placeholder="Copie" required>						
 									</p>
 									<p>
 										<button class="button is-info" type="button" id="addButton"
@@ -74,7 +76,8 @@
 											publishingHouse="<%=book.getPublishingHouse()%>"
 											description="<%=book.getDescription()%>"
 											date="<%=book.getYear()%>"
-											imageUrl="<%=book.getImageUrl()%>">
+											imageUrl="<%=book.getImageUrl()%>"
+											onclick = "addBook(this,copies[<%=i%>])">
 											<span>Aggiungi</span>
 										</button>
 									</p>
@@ -92,47 +95,4 @@
 		}
 		%>
 	</section>
-	<script>
-		$('.button.is-info').each(function(index) {
-			$(this).on("click",function() {
-				$.ajax({
-					url : 'ShowResults',
-					type : 'post',
-					data : {
-						action : 'addBook',
-						title : $(this).attr('title'),
-						author : $(this).attr('author'),
-						isbn : $(this).attr('isbn'),
-						imageUrl : $(this).attr('imageUrl'),
-						description : $(this).attr('description'),
-						date : $(this).attr('date'),
-						category : $(this).attr('category'),
-						publishingHouse : $(this).attr('publishingHouse'),
-						copies : document.getElementsByTagName("input")[index - 1].value
-					},
-					success : function(response) {
-							var columnButton = document.getElementsByTagName("button")[index - 1];
-							//console.log(columnButton); 
-							var copy = document.getElementsByTagName("input")[index - 1];
-							$value = copy.value;
-							//console.log($value); 
-							if (response == "NO" || copy.checkValidity()==false) {
-								var element = document.getElementsByTagName("button")[index - 1];
-								element.className = "button is-danger";
-								element.innerHTML = "Errore";
-								document.location.reload(true);
-							} 
-							else {
-								
-								var element = document.getElementsByTagName("button")[index - 1];
-								element.className = "button is-success";
-								element.innerHTML = "Aggiunto";
-								document.location.reload(true);
-							}
-
-						}
-					});
-			});
-	});
-	</script>
 </body>

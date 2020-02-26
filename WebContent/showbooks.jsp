@@ -3,16 +3,13 @@
 <%@page session="false"%>
 <html>
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Biblioteca</title>
-<link rel="stylesheet"
-	href="https://cdn.jsdelivr.net/npm/bulma@0.8.0/css/bulma.min.css">
-<script defer
-	src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-	<script type="text/javascript" src="./js/showbooks.js" > </script>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Biblioteca</title>
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.8.0/css/bulma.min.css">
+	<script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	<script type="text/javascript" src="./js/showbooks.js" > </script>	
 </head>
 <body>
 
@@ -60,13 +57,13 @@
 										<% if (!SessionHandler.isAdmin(request)) {
 												if(copies.get(book.getISBN()).equals(true)) {%>
 												<a button class="button is-primary is-small" id="loanButton"
-													isbn=<%=book.getISBN()%> onclick = "test()"> Prendi in prestito </a>
+													isbn=<%=book.getISBN()%> onclick = "loanButton(this)"> Prendi in prestito </a>
 												
 												<% } else { %>
 												<a button disabled class="button is-primary is-small" id="loanButton"
-													isbn=<%=book.getISBN()%> onclick ="test()"> Prendi in prestito </a> 
+													isbn=<%=book.getISBN()%>"> Prendi in prestito </a> 
 												<% }
-										} else {%>
+										} else { %>
 											<a button class="button is-info is-small" id="modifyButton"
 											href="${pageContext.request.contextPath}/ModifyInfo?isbn=<%=book.getISBN()%>">
 											 Modifica attributi </a>

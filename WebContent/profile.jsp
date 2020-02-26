@@ -14,6 +14,7 @@
 	src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.js"
 	integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
 	crossorigin="anonymous"></script>
+<script type="text/javascript" src="./js/profile.js" > </script>
 </head>
 <body>
 	<jsp:include page="navbar.jsp"></jsp:include>
@@ -85,7 +86,7 @@
 			<div class="tile is-parent">
 				<article class="tile is-child notification">
 					<p class="title">Hai preso in prestito ${users_book} libri</p>
-					<div class="content">
+					<div class="content" id="CurrentLoans">
 						<%
 							for (BookLoan book : currentLoans) {
 								String title = book.getBook().getBookDescription().getTitle();
@@ -116,7 +117,7 @@
 
 						</form>
 						<% } else { %>
-						<a button class="button is-small is-rounded" id="extendButton" LoanId=<%=book.getId()%>>
+						<a button class="button is-small is-rounded" id="extendButton" LoanId=<%=book.getId()%> onclick = "extension(this)">
 							Proroga restituzione</a>
 						<% } %>
 						</p>
@@ -154,46 +155,5 @@
 		</div>
 
 	</section>
-<script>
-$('.button.is-small.is-rounded').each(function(index) {
-	$(this).on("click", function(){
-		$.ajax({
-			url : 'Extension',
-			type : 'get',
-			data : {
-				LoanId: $(this).attr('LoanId')
-			},
-			success : function(response) {
-				var message="";
-				
-				if(response == "NO_PROROGA"){
-					message = "<div id='success_error' class='notification is-danger'><button id='notificationClose' class='delete'></button><strong>Errore!</strong> Non puoi richiedere la proroga</div>" ;
-				} else if (response == "OK") {
-					window.location.reload();
-				}
-			 	
-				if ($('#success_error').length) {
-					$('#success_error').replaceWith(message);
-				} else {
-					$(".content").after(message);
-				}
-			}
-		});	
-	});
-});
-
-
-$(document).on('click', "[id^='notificationClose']", function () {
-
-  (document.querySelectorAll('.notification .delete') || []).forEach(($delete) => {
-	    $notification = $delete.parentNode;
-
-	      $notification.parentNode.removeChild($notification);
-	  });
-
-});
-
-	
-</script>
 </body>
 </html>

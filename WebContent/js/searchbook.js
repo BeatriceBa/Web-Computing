@@ -1,4 +1,4 @@
-function loanButton(button){
+function loanButton(button) {
 	$.ajax({
 		url : 'Cart',
 		type : 'get',
@@ -8,7 +8,9 @@ function loanButton(button){
 		},
 		success : function(response) {
 			var message="";
-			if (response == "NO_USER"){
+			if (response == "IS_ADMIN"){
+				message = "<div id='success_error' class='notification is-danger'><button id='notificationClose' class='delete'></button><strong>Errore!</strong> Un amministratore non può prendere in prestito libri!</div>" ;
+			} else if (response == "NO_USER"){
 				message = "<div id='success_error' class='notification is-danger'><button id='notificationClose' class='delete'></button><strong>Errore!</strong> Effettua il login prima di prendere in prestito!</div>" ;
 			} else if(response == "IN_CART"){
 				message = "<div id='success_error' class='notification is-danger'><button id='notificationClose' class='delete'></button><strong>Errore!</strong> Il libro è già stato aggiunto al carrello</div>" ;
@@ -23,19 +25,19 @@ function loanButton(button){
 			} else if(response == "ARREAR"){
 				message = "<div id='success_error' class='notification is-danger'><button id='notificationClose' class='delete'></button><strong>Errore!</strong> Prima di prendere in prestito un libro paga la mora </div>" ;	
 			}
-				
 			if ($('#success_error').length) {
 				$('#success_error').replaceWith(message);
 			} else {
-				$('#adding').before(message);
+				$(".container").before(message);
 			}
 		}
-	});
+	});	
 
-	$(document).on('click', "[id^='notificationClose']", function () {		
+	$(document).on('click', "[id^='notificationClose']", function () {
 		(document.querySelectorAll('.notification .delete') || []).forEach(($delete) => {
 			$notification = $delete.parentNode;
 			$notification.parentNode.removeChild($notification);
 		});
 	});
 }
+
