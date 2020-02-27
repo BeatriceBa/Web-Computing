@@ -46,6 +46,45 @@
 					<div class="hero-body">		
 					</div>
 				</section>
+				<div id="adding" show="httpGet(/ShowBooks)">
+					</div>
+				<script>
+				
+				function httpGet(theUrl){
+					      if (window.XMLHttpRequest)
+					      {// code for IE7+, Firefox, Chrome, Opera, Safari
+					          xmlhttp=new XMLHttpRequest();
+					      }
+					      else
+					      {// code for IE6, IE5
+					          xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+					      }
+					      xmlhttp.onreadystatechange=function()
+					      {
+					          if (xmlhttp.readyState==4 && xmlhttp.status==200)
+					          {
+					              createDiv(xmlhttp.responseText);
+					          }
+					      }
+					      xmlhttp.open("GET", theUrl, false);
+					      xmlhttp.send();    
+				    }
+
+					    function createDiv(responsetext)
+					    {
+					        var _body = document.getElementsById('result');
+					        _body.innerHTML = responsetext;
+					    }
+
+					    function loadpage(url)
+					    {
+					        var result = httpGet(url);
+					        createDiv(result);
+					    }
+						
+						
+				</script>
+				
 	</div>
 	<script
 		src="https://demo.creativebulma.net/components/carousel//assets/js/doc.js"></script>
@@ -53,7 +92,7 @@
 		src="https://demo.creativebulma.net/components/carousel//assets/js/bulma-carousel.min.js"></script>
 	<script
 		src="https://demo.creativebulma.net/components/carousel//assets/js/main.js"></script>
-	<jsp:include page="showbooks.jsp" />
+	
 </body>
 
 </html>

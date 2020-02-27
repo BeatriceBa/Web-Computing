@@ -1,3 +1,6 @@
+
+
+
 function loanButton(button){
 	$.ajax({
 		url : 'Cart',
@@ -38,4 +41,8 @@ function loanButton(button){
 			$notification.parentNode.removeChild($notification);
 		});
 	});
-}
+}; 
+
+	
+	
+
