@@ -22,13 +22,14 @@
 	<section class="section">
 		<div class="columns">
 			<div class="column is-full">
+				
 				<c:choose>
 					<c:when test="${cart.isEmpty()}">
 						<h1 class="title">Il tuo carrello e' vuoto</h1> <a href="${pageContext.request.contextPath}/ShowBooks"><button class="button is-large is-success is-fullwidth">Torna alla Homepage</button></a>
 					</c:when>
 					
 					<c:otherwise>
-						<h1 class="title">Libri da prendere in prestito:</h1>
+						<h1 class="title has-text-centered">Libri da prendere in prestito:</h1>
 						<div class="container">
 							<c:forEach items="${cart}" var="book">
 								<c:set var="title" value="${book.getBookDescription().getTitle()}"/>
@@ -38,6 +39,7 @@
 								<c:set var="isbn" value="${book.getBookDescription().getISBN()}"/>
 								
 								<div class="notification">
+									
 									<article class="media">
 										<figure class="media-left"> <p class="image is-64x64"> <img src="${imageURL}"> </p> </figure>
 										<div class="media-content">
@@ -49,11 +51,13 @@
 											<button class="delete" id=removeButton isbn="${isbn}"></button>
 										</div>
 									</article>
+									
 								</div>		
 							</c:forEach>
 							<a href="Cart?Action=Checkout"><button class="button is-large is-success is-fullwidth">Prendi in prestito</button></a>
 						</div>
 					</c:otherwise>
+					
 				</c:choose>
 				<br>
 				<br>

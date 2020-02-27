@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.Locale;
 
@@ -12,6 +13,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import dao.BookDao;
 import dao.BookDescriptionDao;
@@ -40,7 +42,14 @@ public class ShowResults extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		String term = (String) request.getParameter("adding");	
+		BookDescription b = new BookDescription();
+		ArrayList<BookDescription> result = b.wantToAdd(term);
 		
+		HttpSession sessione = request.getSession(false);
+		
+		request.setAttribute("term", term);
+		request.setAttribute("result", result);
 		
 		request.getRequestDispatcher("showresults.jsp").forward(request, response);
 	}

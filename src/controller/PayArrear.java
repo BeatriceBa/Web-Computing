@@ -43,6 +43,7 @@ public class PayArrear extends HttpServlet {
 
 		BookLoanDaoJDBC bookloandao = new BookLoanDaoJDBC();
 		List<BookLoan> bookloanlist = bookloandao.findCurrentByUser(matricola);
+				
 		request.setAttribute("bookLoanList", bookloanlist);
 		request.getRequestDispatcher("showuserloans.jsp").forward(request, response);
 	}
@@ -54,8 +55,7 @@ public class PayArrear extends HttpServlet {
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-
-		// doGet(request, response);
+		doGet(request, response);
 	}
 
 }
