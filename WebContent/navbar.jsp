@@ -17,7 +17,7 @@
 <body onload = "init()">
 	<nav class="navbar" role="navigation" aria-label="main navigation">
 		<div class="navbar-brand">
-			<a class="navbar-item" href="."> <!-- <img src="https://bulma.io/images/bulma-logo.png" width="112" height="28"> -->
+			<a class="navbar-item" href="${pageContext.request.contextPath}/ShowBooks">
 				<i class="fas fa-book-open fa-2x"></i>
 			</a>
 	
@@ -56,13 +56,7 @@
 	
 		</div>
 		<br>
-	
-		<script>
-	  
-			</script>
-		<%
-			if (SessionHandler.getUserID(request) == -1) {
-		%>
+		<% if (SessionHandler.getUserID(request) == -1) { %>
 		<div class="navbar-end">
 			<form class="navbar-item" action="LoginInfo">
 				<div class="buttons">
@@ -75,9 +69,7 @@
 			</form>
 		</div>
 		</div>
-		<%
-			} else {
-		%>
+		<% } else { %>
 		<div class="navbar-end">
 			<form class="navbar-item" action="LoginInfo">
 				<div class="buttons">
@@ -86,25 +78,19 @@
 							<i class="fas fa-user"></i>
 						</center>
 					</a>
-					<%
-						if (!SessionHandler.isAdmin(request)) {
-					%>
+					<% if (!SessionHandler.isAdmin(request)) { %>
 					<a class="button is-info" href="Cart">
 						<center>
 							<i class="fas fa-shopping-cart"></i>
 						</center>
 					</a>
-					<%
-						} else {
-					%>
+					<% } else { %>
 					<a class="button is-info" href="Charts">
 						<center>
 							<i class="fas fa-chart-pie"></i>
 						</center>
 					</a>
-					<%
-						}
-					%>
+					<% } %>
 	
 					<a class="button is-danger" href="Logout">
 						<center>

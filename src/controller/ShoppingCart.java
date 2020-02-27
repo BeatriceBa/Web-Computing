@@ -65,7 +65,6 @@ public class ShoppingCart extends HttpServlet {
 		BookLoanDao bookLoan_dao = new BookLoanDaoJDBC();
 		BookOrderDao bookOrder_dao = new BookOrderDaoJDBC();
 		BookDescriptionDao bookDescription_dao = new BookDescriptionDaoJDBC();
-		Cart shoppingCart = new Cart();
 
 		PrintWriter out = response.getWriter();
 

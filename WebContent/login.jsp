@@ -1,10 +1,7 @@
 <!DOCTYPE html>
 <%@page session="false"%>
 <html>
-
-<%
-	HttpSession sessione = request.getSession(false);
-%>
+<% HttpSession sessione = request.getSession(false); %>
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -61,9 +58,7 @@ body {
 						</form>
 						<center>
 							<h4 class="title is-4">Non registrato?</h4>
-							<a href="Register"><button
-									class="button is-success is-inverted">Clicca qui per
-									registrarti</button></a>
+							<a href="Register"><button class="button is-success is-inverted">Clicca qui per registrarti</button></a>
 						</center>
 					</div>
 				</div>

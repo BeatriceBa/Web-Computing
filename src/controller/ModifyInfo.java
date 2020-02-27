@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Date;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -38,7 +39,12 @@ public class ModifyInfo extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.getRequestDispatcher("modifyinfo.jsp").forward(request, response);
+		BookDescriptionDaoJDBC dao = new BookDescriptionDaoJDBC();
+
+		BookDescription updating_bd = dao.getbyKey(request.getParameter("isbn"));
+		request.setAttribute("bd", updating_bd);
+		RequestDispatcher rd = request.getRequestDispatcher("/modifyinfo.jsp");
+		rd.forward(request, response);
 	}
 
 	/**

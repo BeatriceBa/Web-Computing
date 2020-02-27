@@ -2,7 +2,6 @@
  * 
  */
 function loanButton(button){
-	console.log(button); 
 	$.ajax({
 		url : 'Cart',
 		type : 'get',

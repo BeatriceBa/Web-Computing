@@ -9,7 +9,6 @@ $(document).ready(function() {
 				var element = document.getElementById("modifyButton");
 				element.className = "button is-success";
 				element.innerHTML = "Modificato Correttamente";
-				window.location.href = "index.jsp";
 			} 
 			else if (response == "NO") {
 				var element = document.getElementById("modifyButton");

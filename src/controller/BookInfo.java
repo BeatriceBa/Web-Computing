@@ -6,9 +6,11 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import dao.jdbc.BookDescriptionDaoJDBC;
 import model.BookDescription;
+import utilities.SessionHandler;
 
 /**
  * Servlet implementation class BookInfo
@@ -33,6 +35,7 @@ public class BookInfo extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		String isbn = request.getParameter("isbn");
+		HttpSession sessione = request.getSession(false);
 		BookDescriptionDaoJDBC bd = new BookDescriptionDaoJDBC();
 		BookDescription bookd = bd.getbyKey(isbn);
 		request.setAttribute("title", bookd.getTitle());
@@ -42,6 +45,7 @@ public class BookInfo extends HttpServlet {
 		request.setAttribute("image", bookd.getImageUrl());
 		request.setAttribute("date", bookd.getYear());
 		request.setAttribute("category", bookd.getCategory().getName());
+		request.setAttribute("isAdmin", SessionHandler.isAdmin(request));
 		request.getRequestDispatcher("bookinfo.jsp").forward(request, response);
 	}
 
