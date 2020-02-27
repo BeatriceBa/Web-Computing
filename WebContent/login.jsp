@@ -1,7 +1,9 @@
 <!DOCTYPE html>
 <%@page session="false"%>
 <html>
-<% HttpSession sessione = request.getSession(false); %>
+<%
+	HttpSession sessione = request.getSession(false);
+%>
 <head>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
@@ -17,7 +19,9 @@
 	integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
 	crossorigin="anonymous"></script>
 <script src="http://malsup.github.com/jquery.form.js"></script>
-<script type="text/javascript" src="./js/login.js" > </script>
+<script type="text/javascript" src="./js/login.js">
+	
+</script>
 <style>
 body {
 	overflow-y: hidden;
@@ -27,11 +31,11 @@ body {
 </head>
 <body>
 	<jsp:include page="navbar.jsp"></jsp:include>
-	<section class="hero is-primary is-fullheight">
-		<div class="hero-body">
-			<div class="container">
-				<div class="columns is-centered">
-					<div class="column is-5-tablet is-4-desktop is-3-widescreen"
+	<section class="hero is-info is-fullheight">
+		<div class="hero-body ">
+			<div class="container ">
+				<div class="columns is-centered ">
+					<div class="column is-5-tablet is-4-desktop is-3-widescreen   "
 						id="loginclass">
 						<form method="post" class="box" action="Login" id="loginForm">
 							<div class="field">
@@ -53,14 +57,17 @@ body {
 									</span>
 								</div>
 							</div>
-							<div class="field">
-								<button class="button is-success" type="submit">Accedi
-								</button>
-							</div>
+							<center>
+								<div class="field">
+									<button class="button is-info is-outlined" type="submit">Accedi
+									</button>
+								</div>
+							</center>
 						</form>
 						<center>
 							<h4 class="title is-4">Non registrato?</h4>
-							<a href="Register"><button class="button is-success is-inverted">Clicca qui per registrarti</button></a>
+							<a href="Register"><button class="button is-info is-inverted">Clicca
+									qui per registrarti</button></a>
 						</center>
 					</div>
 				</div>

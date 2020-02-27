@@ -20,10 +20,10 @@
 </head>
 <body>
 	<jsp:include page="navbar.jsp"></jsp:include>
-	<section class="hero is-small is-primary is-bold">
+	<section class="hero is-small is-info">
 		<div class="hero-body">
 			<div class="container">
-				<h1 class="title">${name}${surname}</h1>
+				<h1 class="title">${name} ${surname}</h1>
 				<h2 class="subtitle">Amministratore</h2>
 			</div>
 		</div>
@@ -32,14 +32,14 @@
 	<section class="section">
 		<div class="columns">
 			<div id="bookAddForm" class="column is-half">
-				<h5 class="title is-5">Aggiungi libro via ISBN o nome:</h5>
+				<h5 class="title is-5">Cerca libro da aggiungere via isbn o titolo:</h5>
 				<div class="field is-grouped">
 					<p class="control is-expanded">
 						<input class="input" id="bookInfo" type="text"
 							placeholder="ISBN o nome" required>
 					</p>
 					<p class="control">
-						<a class="button is-info" id="wantToAdd" onclick="wantToAdd()">
+						<a class="button is-info is-outlined" id="wantToAdd" onclick="wantToAdd()">
 							Aggiungi </a>
 					</p>
 				</div>
@@ -55,7 +55,7 @@
 					</p>
 
 					<p class="control">
-						<a id="removeFromLibrary" class="button is-danger"
+						<a id="removeFromLibrary" class="button is-danger is-outlined"
 							onclick="removeFromLibrary()"> Rimuovi </a>
 					</p>
 				</div>
@@ -67,7 +67,7 @@
 							placeholder="Matricola" required>
 					</p>
 					<p class="control">
-						<a class="button is-success" id="payArr" onclick="payArr()">
+						<a class="button is-success is-outlined" id="payArr" onclick="payArr()">
 							Paga mora e restituisci </a>
 					</p>
 				</div>
@@ -84,7 +84,7 @@
 							placeholder="Cognome" required>
 					</p>
 					<p class="control">
-						<a id="getInfo" class="button is-success" onclick="getInfo()">
+						<a id="getInfo" class="button is-success is-outlined" onclick="getInfo()">
 							Trova </a>
 					</p>
 				</div>

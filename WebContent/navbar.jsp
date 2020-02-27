@@ -42,10 +42,10 @@
 							<div class="field is-grouped">
 								<p class="control is-expanded">
 									<input class="input select" autocomplete=off id="libro"
-										name="libro" autocomplete="autoFUCK()" placeholder="Cerca per nome, autore, ecc.." onkeyup="typing(this,event);"  />
+										name="libro" placeholder="Cerca per nome, autore, ecc.." onkeyup="typing(this,event);"  />
 								</p>
 								<p class="control">
-									<button class="button is-primary" type="submit" id=Search>Cerca</button>
+									<button class="button is-info" type="submit" id=Search>Cerca</button>
 								</p>
 								<div class="dropdown-menu" id="DropDown" role="menu"></div>
 							</div>
@@ -60,7 +60,7 @@
 		<div class="navbar-end">
 			<form class="navbar-item" action="LoginInfo">
 				<div class="buttons">
-					<a class="button is-primary" href="Login">
+					<a class="button is-info " href="Login">
 						<center>
 							<strong>Registrati o Accedi</strong>
 						</center>
@@ -92,7 +92,7 @@
 					</a>
 					<% } %>
 	
-					<a class="button is-danger" href="Logout">
+					<a class="button is-danger is-outlined" href="Logout">
 						<center>
 							<strong><i class="fas fa-sign-out-alt"></i> Logout</strong>
 						</center>

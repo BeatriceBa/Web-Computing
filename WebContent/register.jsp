@@ -21,7 +21,7 @@
 </head>
 <body>
 	<jsp:include page="navbar.jsp"></jsp:include>
-	<section class="hero is-primary is-fullheight">
+	<section class="hero is-info is-fullheight">
 		<div class="hero-body">
 			<div class="container">
 				<div class="columns is-centered">
@@ -40,7 +40,7 @@
 							<div class="field">
 								<label for="" class="label">Nome</label>
 								<div class="control has-icons-left">
-									<input type="text" name="name" placeholder="es. Davide"
+									<input type="text" name="name" placeholder="es. Nome"
 										class="input" required> <span
 										class="icon is-small is-left"> <i
 										class="fa fa-address-card"></i>
@@ -50,7 +50,7 @@
 							<div class="field">
 								<label for="" class="label">Cognome</label>
 								<div class="control has-icons-left">
-									<input type="text" name="surname" placeholder="es. Pucci"
+									<input type="text" name="surname" placeholder="es. Cognome"
 										class="input" required> <span
 										class="icon is-small is-left"> <i
 										class="fa fa-address-card"></i>
@@ -61,7 +61,7 @@
 								<label for="" class="label">Indirizzo</label>
 								<div class="control has-icons-left">
 									<input type="text" name="address"
-										placeholder="es. Via delle rose 21" class="input" required>
+										placeholder="es. Via ... " class="input" required>
 									<span class="icon is-small is-left"> <i
 										class="fa fa-address-card"></i>
 									</span>
@@ -71,7 +71,7 @@
 								<label for="" class="label">Email</label>
 								<div class="control has-icons-left">
 									<input type="email" name="email"
-										placeholder="es. dpucci@gmail.com" class="input" required>
+										placeholder="es. nome.cognome@gmail.com" class="input" required>
 									<span class="icon is-small is-left"> <i
 										class="fa fa-envelope"></i>
 									</span>
@@ -103,7 +103,7 @@
 							<br>
 							<div class="field">
 								<center>
-									<button class="button is-success" type="submit">
+									<button class="button is-info" type="submit">
 										Registrati</button>
 								</center>
 							</div>

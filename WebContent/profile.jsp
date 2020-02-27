@@ -20,7 +20,7 @@
 </head>
 <body>
 	<jsp:include page="navbar.jsp"></jsp:include>
-	<section class="hero is-small is-primary is-bold">
+	<section class="hero is-small is-info is-bold">
 		<div class="hero-body">
 			<div class="container">
 				<h1 class="title">${user.getName()} ${user.getSurname()}</h1>
@@ -61,7 +61,7 @@
 							<c:set var="author" value="${book.getBook().getBookDescription().getAuthor()}"/>
 							<c:set var="return_date" value="${book.getReturn_date().toString()}"/>
 							
-							<p class="subtitle"> <i class="fas fa-book"></i> ${title} di ${author} da restituire il <strong>${return_date}</strong> &nbsp; </p>
+							<p class="subtitle"> <i class="fas fa-book"> </i> ${title} di ${author} da restituire il <strong>${return_date}</strong> &nbsp; </p>
 							<c:choose>
 								<c:when test="${book.getArrears() > 0}">
 									<br> Mora da pagare: <strong>${book.getArrears()}€</strong>
