@@ -1,6 +1,7 @@
 package controller;
 
 import java.io.IOException;
+import java.util.LinkedList;
 import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -41,6 +42,11 @@ public class Profile extends HttpServlet {
 
 		final DatabaseManager dm = DatabaseManager.getInstance();
 		UserDao dao = new UserDaoJDBC();
+		BookLoanDao bookLoanDao = new BookLoanDaoJDBC();
+
+		List<BookLoan> everyLoan = bookLoanDao.findAll();
+		List<BookLoan> returnedLoans = new LinkedList<BookLoan>();
+		List<BookLoan> currentLoans = new LinkedList<BookLoan>();
 
 		if (SessionHandler.isAdmin(request)) {
 			request.getRequestDispatcher("Admin").forward(request, response);
@@ -50,19 +56,24 @@ public class Profile extends HttpServlet {
 		// ----Have access to current user:----
 		if (SessionHandler.getUserID(request) != -1) {
 			User user = dao.getbyKey(SessionHandler.getUserID(request));
-			passParameters(user, request);
+			boolean isMoroso = dao.isMoroso(user);
+			for (BookLoan b : everyLoan) {
+				if (b.isReturned() && b.getUser_id() == user.getId())
+					returnedLoans.add(b);
+				else if (!b.isReturned() && b.getUser_id() == user.getId()) 
+					currentLoans.add(b);
+			}
+			
+			request.setAttribute("user", user);
+			request.setAttribute("everyLoan", everyLoan);
+			request.setAttribute("returnedLoans", returnedLoans);
+			request.setAttribute("currentLoans", currentLoans);
+			request.setAttribute("isMoroso", isMoroso);
+			request.setAttribute("totalArrearsPerUser", user.getTotal_arrears());
 			request.getRequestDispatcher("profile.jsp").forward(request, response);
 		} else {
 			request.getRequestDispatcher("/").forward(request, response);
 		}
-	}
-
-	private void passParameters(User user, HttpServletRequest request) {
-		request.setAttribute("user_id", user.getId());
-		request.setAttribute("user_name", user.getName());
-		request.setAttribute("user_surname", user.getSurname());
-		request.setAttribute("user_type", user.getUser_type().toString());
-		request.setAttribute("users_book", getUsersBook(user));
 	}
 
 	private int getUsersBook(User user) {
