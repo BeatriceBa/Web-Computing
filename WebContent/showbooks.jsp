@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <%@page import="java.beans.EventHandler"%>
 <%@page session="false"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
 	<meta charset="UTF-8">
@@ -12,71 +13,52 @@
 	<script type="text/javascript" src="./js/showbooks.js" > </script>	
 </head>
 <body>
-
-	<%@ page import="dao.jdbc.*"%>
-	<%@ page import="dao.*"%>
-
-	<%@ page import="database.*"%>
-	<%@ page import="model.*"%>
-	<%@ page import="java.util.*"%>
-	<%@ page import="java.time.LocalDate"%>
-	<%@ page import="utilities.*"%>
-	<%@ page import="javax.servlet.http.HttpServlet.*"%>
-	<%@ page import="javax.servlet.http.HttpSession"%>
-	<%
-		final DatabaseManager dm = DatabaseManager.getInstance();
-		BookDescriptionDao dao = new BookDescriptionDaoJDBC();
-		List<BookDescription> res = dao.findAll();
-		HashMap<String,Boolean> copies = dao.isThereABook();
-		HttpSession sessione = request.getSession(false);
-	%>
 	<section class="section">
 		<div class="container" id="adding">
-			<h2 class="title">
-				Libri disponibili
-				</h1>
+			<h2 class="title"> Libri disponibili </h2>
 				<div class="columns is-multiline">
-
-					<% for (BookDescription book : res) { %>
+					<c:forEach items="${bookDescriptions}" var="book">	
 					<div class="column is-one-fifth">
 						<div class="card">
 							<div class="card-image">
 								<figure class="image is-3by4">
-									<img src="<%=book.getImageUrl()%>" alt="Placeholder image" style="width=100%; height=300px">
+									<img src="${book.getImageUrl()}" alt="Placeholder image" style="width=100%; height=300px">
 								</figure>
 							</div>
 							<div class="card-content">
 								<div class="content">
-									
-										<p class="title is-5"><%=book.getTitle()%></p>
-										<%=book.getAuthor()%>
-										<br> <br> <a button class="button is-small"
-											href="${pageContext.request.contextPath}/BookInfo?isbn=<%=book.getISBN()%>">
-											<span class="icon is-small"> <i class="fas fa-info"></i></a> 
-										</span>
-										<% if (!SessionHandler.isAdmin(request)) {
-												if(copies.get(book.getISBN()).equals(true)) {%>
-												<a button class="button is-primary is-small" id="loanButton"
-													isbn=<%=book.getISBN()%> onclick = "loanButton(this)"> Prendi in prestito </a>
-												
-												<% } else { %>
-												<a button disabled class="button is-primary is-small" id="loanButton"
-													isbn=<%=book.getISBN()%>"> Prendi in prestito </a> 
-												<% }
-										} else { %>
-											<a button class="button is-info is-small" id="modifyButton"
-											href="${pageContext.request.contextPath}/ModifyInfo?isbn=<%=book.getISBN()%>">
-											 Modifica attributi </a>
-										<%} %>
-									
+									<p class="title is-5">${book.getTitle()} </p>
+									${book.getAuthor()}
+									<br> <br> 
+									<a button class="button is-small" 
+										href="${pageContext.request.contextPath}/BookInfo?isbn=${book.getISBN()}">
+										<span class="icon is-small"> </span>
+										<i class="fas fa-info"></i>
+									</a> 
+									<c:set var="isbn" value="${book.getISBN()}"/>
+									<c:choose>
+										<c:when test="${!isAdmin}">											
+											<c:choose>
+												<c:when test="${copies.get(isbn) == true}">
+													<a button class="button is-primary is-small" id="loanButton" isbn="${book.getISBN()}" onclick = "loanButton(this)"> Prendi in prestito </a>
+												</c:when>
+												<c:otherwise>
+													<a button disabled class="button is-primary is-small" id="loanButton" isbn="${book.getISBN()}"> Prendi in prestito </a> 
+												</c:otherwise>
+											</c:choose>
+								
+										</c:when>			
+										<c:otherwise>
+											<a button class="button is-info is-small" id="modifyButton" href="${pageContext.request.contextPath}/ModifyInfo?isbn=${book.getISBN()}"> Modifica attributi </a>
+										</c:otherwise>
+									</c:choose>
 								</div>
 							</div>
 						</div>
 					</div>
-					<% } %>
-				</div>
+				</c:forEach>
+			</div>
 		</div>
 	</section>
-	
 </body>
 </html>

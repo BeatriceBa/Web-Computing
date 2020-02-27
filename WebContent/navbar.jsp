@@ -106,9 +106,7 @@
 					%>
 	
 					<a class="button is-danger" href="Logout">
-						<center>
 							<strong><i class="fas fa-sign-out-alt"></i> Logout</strong>
-						</center>
 					</a>
 				</div>
 			</form>
