@@ -34,6 +34,8 @@ public class Register extends HttpServlet {
 	 */
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		System.out.println("doget");
+
 		request.getRequestDispatcher("register.jsp").forward(request, response);
 	}
 
@@ -42,14 +44,18 @@ public class Register extends HttpServlet {
 	 */
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
 		UserDao dao = new UserDaoJDBC();
-		PrintWriter out=response.getWriter();  
 
-		if(dao.getbyKey(Integer.parseInt(request.getParameter("id"))) != null) {
+		PrintWriter out = response.getWriter();  
+		int id = Integer.parseInt((request.getParameter("id")));
+		
+		User user = dao.getbyKey(id);
+		
+		if(user != null) {
 			out.append("NO");
 			out.close();
 		} else {
+			System.out.println("registering");
 			User registering_user = new User(
 					Integer.parseInt(request.getParameter("id")),
 					request.getParameter("name"),

@@ -43,7 +43,7 @@
 	<br>
 	<br>
 	<div class="columns is-centered">
-		<div class="column is-5">
+		<div class="column is-5-tablet is-4-desktop is-3-widescreen">
 			<section class="section ">
 				<article class="media">
 					<figure class="media-left">

@@ -85,7 +85,7 @@
 					<div class="column">
 						<figure class="image">
 							<img
-								src="./img/DontForget.jpeg"
+								src="https://divjoy.com/static/images/uploads/undraw-having_fun_iais.svg"
 								alt="Explore">
 						</figure>
 					</div>
