@@ -11,6 +11,7 @@
 		crossorigin="anonymous">
 	</script>
 	<script type="text/javascript" src="./js/navbar.js" > </script>
+	<script type="text/javascript" src="./js/autocomplete.js" > </script>	
 </head>
 
 <body onload = "init()">
@@ -41,7 +42,7 @@
 							<div class="field is-grouped">
 								<p class="control is-expanded">
 									<input class="input select" autocomplete=off id="libro"
-										name="libro" placeholder="Cerca per nome, autore, ecc.." />
+										name="libro" autocomplete="autoFUCK()" placeholder="Cerca per nome, autore, ecc.." onkeyup="typing(this,event);"  />
 								</p>
 								<p class="control">
 									<button class="button is-primary" type="submit" id=Search>Cerca</button>
@@ -116,44 +117,35 @@
 		%>
 	</nav>
 	<script type="text/javascript">
-		$( "#libro" ).keyup(function() {
-			var value = $.value;
-			if (value==null){
-				if(document.getElementById("suggestion"))
-				{document.getElementById("suggestion").remove()};
-		   		return '';
-				};
-		});
-		var xhr;
-		var suggestValue;
 	
-		$('input[name="libro"]').autoComplete({
+	var xhr = new XMLHttpRequest();
+	var suggestValue; 
+	$("#libro").autoComplete({
 			minChars: 1,
 			cache: false,
 			source: function(term, response){
 				xhr = $.getJSON('AutoComplete', { libro: term }, function(data){ response(data); });
+				console.log(xhr); 
 				suggestValue = $.textContent; 
-					if(suggestValue == null){
-						if(document.getElementById("suggestion"))
-			       		{document.getElementById("suggestion").remove()};
-			       		return '';
-			       	}
-			    }, 
-			    renderItem:  function (item, search){
-			    	if(document.getElementById("suggestion"))
-		       			{document.getElementById("suggestion").remove()};
-		    		var t = document.createElement("option");
-		    		t.id = "suggestion";
-		    		t.className += "dropdown-content";
-		    		t.append(item);
-		    		document.getElementById("DropDown").append(t);
-		    		return '';
-			    }
-			});
+				if(suggestValue == null){
+					if(document.getElementById("suggestion"))
+		       		{
+						document.getElementById("suggestion").remove()
+					};
+		       		return '';
+		       	}
+			},
+			renderItem:  function (item, search){
+		    	if(document.getElementById("suggestion"))
+	       			{document.getElementById("suggestion").remove()};
+	    		var t = document.createElement("option");
+	    		t.id = "suggestion";
+	    		t.className += "dropdown-content";
+	    		t.append(item);
+	    		document.getElementById("DropDown").append(t);
+	    		return '';
+		    }
+	}); 
 	
-		$(document).on('click', "[id^='suggestion']", function () {
-			document.getElementById("libro").value = document.getElementById("suggestion").textContent;
-			document.getElementById("suggestion").remove();
-		});	
 	</script>
 </body>

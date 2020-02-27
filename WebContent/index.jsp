@@ -16,10 +16,6 @@
 		href="https://demo.creativebulma.net/components/carousel//assets/css/bulma-carousel.min.css"
 		rel="stylesheet">
 	<script
-		src="https://cdnjs.cloudflare.com/ajax/libs/jquery-autocomplete/1.0.7/jquery.auto-complete.js"
-		integrity="sha256-K3qK8ynOxhJVloLac0CTWwr7iFKVDZF4Gd2yEsiAZYA="
-		crossorigin="anonymous"></script>
-	<script
 		src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.js"
 		integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
 		crossorigin="anonymous"></script>
