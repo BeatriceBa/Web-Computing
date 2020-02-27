@@ -39,7 +39,6 @@ public class ShowBooks extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		final DatabaseManager dm = DatabaseManager.getInstance();
-		System.out.println("FUCK");
 		BookDescriptionDao dao = new BookDescriptionDaoJDBC();
 		List<BookDescription> bookDescriptions = dao.findAll();
 		HashMap<String,Boolean> copies = dao.isThereABook();
