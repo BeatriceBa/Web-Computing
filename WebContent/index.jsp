@@ -53,7 +53,7 @@
 		src="https://demo.creativebulma.net/components/carousel//assets/js/bulma-carousel.min.js"></script>
 	<script
 		src="https://demo.creativebulma.net/components/carousel//assets/js/main.js"></script>
-	<jsp:include page="${pageContext.request.contextPath}/ShowBooks" />
+	<jsp:include page="showbooks.jsp" />
 </body>
 
 </html>
