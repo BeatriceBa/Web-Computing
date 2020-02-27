@@ -13,7 +13,10 @@
 	href="https://cdn.jsdelivr.net/npm/bulma@0.8.0/css/bulma.min.css">
 <script defer
 	src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
-
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.js"
+	integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+	crossorigin="anonymous"></script>
 <script src="http://malsup.github.com/jquery.form.js"></script>
 <script type="text/javascript" src="./js/login.js" > </script>
 <style>
