@@ -26,7 +26,7 @@
 		<div class="hero-body">
 			<div class="container ">
 				<center>
-					<p class="title is-1 is-spaced">Network Library</p>
+					<p class="title is-1 is-spaced">Chi siamo?</p>
 				</center>
 				<br>
 				<div class="tabs is-centered">
@@ -34,7 +34,7 @@
 						<li><a href="index.jsp"><span class="icon is-small"><i
 									class="fa fa-home" aria-hidden="true"></i></span> <span>Home</span></a></li>
 						<li><a href="howTo.jsp" ><span class="icon is-small"><i
-									class="fa fa-cog"></i></span> <span>How to</span></a></li>
+									class="fa fa-cog"></i></span> <span>Servizi</span></a></li>
 					</ul>
 				</div>
 			</div>
@@ -43,6 +43,7 @@
 	</section>
 	<br>
 	<br>
+		
 		<section class="section is-centered">
 			<article class="media">
 				<figure class="media-left">
@@ -53,13 +54,15 @@
 				<div class="media-content">
 					<div class="content">
 						<p>
-							<strong>Irene Macrì</strong> <small>@IreneMacrì</small> <br>
-							Computer Science student.
+							<strong>Irene Macrì</strong> <small>@IreneMacrì</small> 
+							<br> Studentessa di informatica all'Università della Calabria. 
+							<br> Front-end developer. 
+							<br> irene.macri97@gmail.com
 						</p>
 					</div>
 					<nav class="level is-mobile">
 						<div class="level-left">
-							<a class="level-item"> <span class="icon is-small"><i
+							<a class="level-item" href="https://www.linkedin.com/in/irene-macrí-811283195/"> <span class="icon is-small"><i
 									class="fas fa-heart"></i></span>
 							</a>
 						</div>
@@ -77,19 +80,20 @@
 					<div class="content">
 						<p>
 							<strong>Beatrice Baldassarre</strong> <small>@BeatriceBaldassarre</small>
-							<br> Computer Science student.
+							<br> Studentessa di informatica all'Università della Calabria. 
+							<br> Back-end developer. 
+							<br> beabaldassarre@outlook.com
 						</p>
 					</div>
 					<nav class="level is-mobile">
 						<div class="level-left">
-							<a class="level-item"> <span class="icon is-small"><i
+							<a class="level-item" href="https://www.linkedin.com/in/beatrice-baldassarre-192842194/"> <span class="icon is-small"><i
 									class="fas fa-heart"></i></span>
 							</a>
 						</div>
 					</nav>
 				</div>
 			</article>
-
 		</section>
 </body>
 </html>

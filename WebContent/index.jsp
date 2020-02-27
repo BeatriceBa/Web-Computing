@@ -33,9 +33,9 @@
 				<div class="tabs is-centered">
 					<ul>
 						<li><a href="credits.jsp"><span class="icon is-small"><i
-									class="fa fa-code" aria-hidden="true"></i></span> <span>Credits</span></a></li>
+									class="fa fa-code" aria-hidden="true"></i></span> <span>Chi siamo</span></a></li>
 						<li><a href="howTo.jsp"><span class="icon is-small"><i
-									class="fa fa-cog"></i></span> <span>Come fare</span></a></li>
+									class="fa fa-cog"></i></span> <span>Servizi</span></a></li>
 					</ul>
 				</div>
 			</div>

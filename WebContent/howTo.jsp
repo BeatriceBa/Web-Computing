@@ -27,7 +27,7 @@
 		<div class="hero-body">
 			<div class="container ">
 				<center>
-					<p class="title is-1 is-spaced">How To</p>
+					<p class="title is-1 is-spaced">Servizi offerti</p>
 				</center>
 				<br>
 				<div class="tabs is-centered">
@@ -35,7 +35,7 @@
 						<li><a href="index.jsp"><span class="icon is-small"><i
 									class="fa fa-home" aria-hidden="true"></i></span> <span>Home</span></a></li>
 						<li><a href="credits.jsp"><span class="icon is-small"><i
-									class="fa fa-code" aria-hidden="true"></i></span> <span>Credits</span></a></li>
+									class="fa fa-code" aria-hidden="true"></i></span> <span>Chi siamo</span></a></li>
 					</ul>
 				</div>
 			</div>
@@ -50,14 +50,14 @@
 					<div class="column">
 						<figure class="image">
 							<img
-								src="https://divjoy.com/static/images/uploads/undraw-balloons_vxx5.svg"
+								src="https://techcrunch.com/wp-content/uploads/2015/08/safe_image.gif?w=730&crop=1"
 								alt="Explore">
 						</figure>
 					</div>
 					<div class="column is-half">
-						<h3 class="title has-text-weight-bold is-spaced is-3">Sign in</h3>
-						<p class="subtitle">You have to complete the form with the
-							requested fields and then push the button Registrati</p>
+						<h3 class="title has-text-weight-bold is-spaced is-3">Registrati!</h3>
+						<p class="subtitle"> Compila il form con i campi richiesti, 
+						click sul bottone registrati e potrai usufruire dei nostri servizi. </p>
 					</div>
 
 				</div>
@@ -65,13 +65,13 @@
 				<div class="columns is-variable is-8 is-centered">
 
 					<div class="column is-half">
-						<h3 class="title has-text-weight-bold is-spaced is-3 ">Borrow
-							Book</h3>
+						<h3 class="title has-text-weight-bold is-spaced is-3 "> Prendi in prestito!</h3>
 						<p class="subtitle">
-							You can borrow one ore more books with a maximum of five, the
-							book loan lasts one week but you can extend it once per book.<br>
-							After the period you have to give it or them back, otherwise you
-							must pay an arrear.
+							Potrai prendere in prestito uno o più libri (per un massimo di cinque)
+							il prestito dura una settimana, ma non preoccuparti, potrai estenderlo 
+							e tenerlo per un'altra settimana.<br>
+							Attenzione! Arrivata la data di scadenza, dovrai restituirlo, pena 
+							il pagamento di una mora.
 						</p>
 					</div>
 					<div class="column">
@@ -92,11 +92,11 @@
 						</figure>
 					</div>
 					<div class="column is-half">
-						<h3 class="title has-text-weight-bold is-spaced is-3 ">Don't
-							forget to give them back</h3>
-						<p class="subtitle">The arrear is about 1€ per day , but don't
-							worry thanks to us you can pay it online having an entire week to
-							give the book with arrear back.</p>
+						<h3 class="title has-text-weight-bold is-spaced is-3 ">Non dimenticare di restituire
+						i libri!</h3>
+						<p class="subtitle"> La mora aumenta di 1€ ogni giorno. Ma non preoccuparti,
+						grazie a noi potrai pagarla anche online, avrai tempo una settimana per restituire il 
+						libro.</p>
 					</div>
 
 				</div>
