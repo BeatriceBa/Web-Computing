@@ -48,17 +48,17 @@
 				<div class="tile is-child box">
 					<p class="title">Sei già registrato?</p>
 					<br>
-					<button class="button is-info is-outlined is-fullwidth"">
+					<a button class="button is-info is-outlined is-fullwidth" href="${pageContext.request.contextPath}/Login">
 						<span class="icon is-small"> <i class="fa fa-user-circle"></i>
 						</span> <span>Registrati o accedi</span>
-					</button>
+					</a>
 					<br> <br>
 					<p class="title">Cerchi un libro?</p>
 					<br>
-					<button class="button is-info is-outlined is-fullwidth"">
+					<a button class="button is-info is-outlined is-fullwidth" href="${pageContext.request.contextPath}/ShowBooks">
 						<span class="icon is-small"> <i class="fa fa-search"></i>
 						</span> <span>Inizia la tua ricerca</span>
-					</button>
+					</a>
 				</div>
 
 				<div class="tile is-child box">
