@@ -103,7 +103,7 @@
 							<br>
 							<div class="field">
 								<center>
-									<button class="button is-success" type="submit">
+									<button class="button is-info" type="submit">
 										Registrati</button>
 								</center>
 							</div>

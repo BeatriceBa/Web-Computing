@@ -5,6 +5,7 @@ $(document).ready(function() {
 	$('#registerForm')
 	.ajaxForm({
 		url : 'Register',
+		method: 'post',
 		success : function (response) {
 			if(response == "OK"){
 				window.location.href = "Profile";

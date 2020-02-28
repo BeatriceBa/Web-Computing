@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import dao.UserDao;
 import dao.jdbc.UserDaoJDBC;
+import database.DatabaseManager;
 import model.User;
 import model.UserType;
 
@@ -34,7 +35,7 @@ public class Register extends HttpServlet {
 	 */
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		System.out.println("doget");
+		
 
 		request.getRequestDispatcher("register.jsp").forward(request, response);
 	}
@@ -44,6 +45,8 @@ public class Register extends HttpServlet {
 	 */
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		final DatabaseManager dm = DatabaseManager.getInstance();
+
 		UserDao dao = new UserDaoJDBC();
 
 		PrintWriter out = response.getWriter();  
@@ -55,7 +58,6 @@ public class Register extends HttpServlet {
 			out.append("NO");
 			out.close();
 		} else {
-			System.out.println("registering");
 			User registering_user = new User(
 					Integer.parseInt(request.getParameter("id")),
 					request.getParameter("name"),
