@@ -17,6 +17,7 @@ import dao.UserDao;
 import dao.jdbc.BookDaoJDBC;
 import dao.jdbc.BookDescriptionDaoJDBC;
 import dao.jdbc.UserDaoJDBC;
+import database.DatabaseManager;
 import model.Book;
 import model.BookDescription;
 import model.User;
@@ -68,6 +69,7 @@ public class Admin extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
+		DatabaseManager db = DatabaseManager.getInstance();
 		BookDao book_dao = new BookDaoJDBC();
 		BookDescriptionDao bookDescription_dao = new BookDescriptionDaoJDBC();
 		UserDaoJDBC user_dao = new UserDaoJDBC();
