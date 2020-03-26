@@ -1,13 +1,14 @@
 <h1>Introduzione :</h1>
 
 <p>La piattaforma offre un servizio online di gestione di una biblioteca. <br>
-Al suo interno Ë presente un catalogo di testi universitari. <br>
-Líobiettivo principale Ë consentire agli addetti della biblioteca un <br />facile utilizzo delle funzionalit‡ di gestione della stessa.</p>
+Al suo interno √® presente un catalogo di testi universitari. <br>
+L‚Äôobiettivo principale √® consentire agli addetti della biblioteca un <br />facile utilizzo delle funzionalit√† di gestione della stessa.</p>
 
 <h1>Istruzioni: </h1>
 <p> Importare il progetto su IDE (Per eclipse: <code> File > Import.. > Import from Git > Smart Import</code> ). <br>
 Associare un server <code>  Apache Tomcat v >= 9.0 </code> al progetto.
 <br> Avviare il server <code> Apache Tomcat</code>.</p>
+<br> Il progetto non ha pi√π l'accesso al db .</p>
 
 <p>Per la relativa documentazione fare riferimento al <a href="https://drive.google.com/open?id=1_a9Lz25gsGd7fz3KcR9CC80NmMAQRCxe">Link</a>. </p>
 
