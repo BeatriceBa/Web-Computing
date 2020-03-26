@@ -24,7 +24,7 @@ public class DatabaseManager {
 	private final String password = "biblioteca";
 
 	// Credenziali elephantSQL
-	private final String url = "jdbc:postgresql://magikarp.fun:5432/biblioteca";
+	private final String url = "urlnotavailable";
 
 	private final String user = "ingsw";
 
