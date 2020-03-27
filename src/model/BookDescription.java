@@ -72,10 +72,10 @@ public BookDescription() {
 		ArrayList<BookDescription> cose = new ArrayList<BookDescription>(); 
 		try {
 			if(isbn_search) {
-			url = new URL("https://www.googleapis.com/books/v1/volumes?q=isbn:" + term + "&key=AIzaSyDGBd3sgZ2CZGzgzeI_gDhBJPQRdMGY1vU");
+			url = new URL("https://www.googleapis.com/books/v1/volumes?q=isbn:" + term + "api key");
 			} else {
 				
-				url = new URL ("https://www.googleapis.com/books/v1/volumes?q=intitle:" + URLEncoder.encode(term) + "&key=AIzaSyDGBd3sgZ2CZGzgzeI_gDhBJPQRdMGY1vU");
+				url = new URL ("https://www.googleapis.com/books/v1/volumes?q=intitle:" + URLEncoder.encode(term) + "apy key");
 			}
 			String response = new String();
 			URLConnection yc = url.openConnection();
